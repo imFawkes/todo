@@ -1,21 +1,23 @@
 <h1>User: <%= @user.name %></h1>
 
-<h2>All Tasks</h2>
+<h2>Unsorted Tasks</h2>
 <%= render partial: "tasks/new" %>
-<div class = "tasks">
-  <% @user.tasks.reverse_each do |task|%>
-    <%= render partial: "tasks/show", locals: { task: task } %>
+<div class = "tasks-unsorted">
+  <% @user.tasks.each do |task|%>
+    <% if task.lists.none? %>
+      <%= render partial: "tasks/show", locals: { task: task } %>
+    <% end %>
   <% end %>
 </div>
 
-<h2>Lists</h2>
-<%= render partial: "lists/new" %>
 <div class = "lists">
   <% @user.lists.each do |list|%>
     <%= render partial: "lists/show", locals: { list: list }%>
   <% end %>
 </div>
 
+<h2>User Lists</h2>
+<%= render partial: "lists/index" %>
 
 
 <h2>Profile Settings</h2>

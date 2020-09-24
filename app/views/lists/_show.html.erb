@@ -1,5 +1,6 @@
-<p>
-  <span><%= list.name %></span>
-  <span>:id - <%= list.id %></span>
-  <span><%= link_to "Delete List", user_list_path(@user, list), method: :delete, data: { confirm: "Are you sure?" } %></span>
-<p>
+<h2>List: <%= list.name %></h2>
+
+<% list.tasks.each do |task|%>
+  <%= render partial: "tasks/show", locals: {task: task} %>
+<% end %>
+

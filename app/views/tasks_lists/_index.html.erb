@@ -1,0 +1,24 @@
+<% task.lists.each do |list| %>
+  <p><%= list.name %></p>
+<% end %>
+
+<p>
+  <%= form_with url: user_task_add_task_list_path(@user, task) do |form| %>
+    <%= form.collection_select(:list_id, @user.lists, "id", "name") %>
+    <%= form.submit "Add to List" %>
+  <% end %>
+</p>
+
+<p>
+  <%= form_with url: user_task_change_task_list_path(@user, task), method: :patch do |form| %>
+    <%= form.collection_select(:list_id, @user.lists, "id", "name") %>
+    <%= form.submit "Change List" %>
+  <% end %>
+</p>
+
+<p>
+  <%= form_with url: user_task_delete_task_list_path(@user, task), method: :delete do |form| %>
+    <%= form.collection_select(:list_id, @user.lists, "id", "name") %>
+    <%= form.submit "Delete from List" %>
+  <% end %>
+</p>
