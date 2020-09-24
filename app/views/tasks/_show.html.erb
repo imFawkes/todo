@@ -1,0 +1,44 @@
+<h3>Task</h3>
+
+<div>
+  <h4>Content of this task: </h4>
+  <span><%= task.content %></span>
+  <span><%= link_to "Delete Task", user_task_path(@user, task), method: :delete, data: { confirm: "Are you sure?" } %></span>
+  <span>  </span>
+</div>
+
+
+<div class = "subtasks">
+  <h4>Subtasks of this task:</h4>
+  <% task.subtasks.each do |subtask|%>
+    <%= render partial: "subtasks/show", locals: { task: task, subtask: subtask } %>
+  <% end %>
+  <%= render partial: "subtasks/new", locals: { task: task } %>
+</div>
+
+<%# Тут тестовая работа со списками: %>
+<p>
+  <h4>Lists of this task:</h4>
+  <% task.lists.each do |list| %>
+   <p><%= list.name %></p>
+  <% end %>
+</p>
+<p>
+  <%= form_with url: user_task_add_task_list_path(@user, task) do |form| %>
+    <%= form.collection_select(:list_id, @user.lists, "id", "name") %>
+    <%= form.submit "Add to List" %>
+  <% end %>
+</p>
+<p>
+  <%= form_with url: user_task_change_task_list_path(@user, task), method: :patch do |form| %>
+    <%= form.collection_select(:list_id, @user.lists, "id", "name") %>
+    <%= form.submit "Change List" %>
+  <% end %>
+</p>
+<p>
+  <%= form_with url: user_task_delete_task_list_path(@user, task), method: :delete do |form| %>
+    <%= form.collection_select(:list_id, @user.lists, "id", "name") %>
+    <%= form.submit "Delete from List" %>
+  <% end %>
+</p>
+
