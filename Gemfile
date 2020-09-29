@@ -55,3 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # check N+1
 gem "bullet", "~> 6.1", :group => :development
+
+#authentication, https://github.com/heartcombo/devise
+gem 'devise'
