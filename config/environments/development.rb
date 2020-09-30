@@ -60,6 +60,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  # Show N+1 problems
   config.after_initialize do
     Bullet.enable = true #enable gem
     # Bullet.sentry = true 
@@ -82,4 +83,8 @@ Rails.application.configure do
     # Bullet.stacktrace_excludes = [ 'their_gem', 'their_middleware', ['my_file.rb', 'my_method'], ['my_file.rb', 16..20] ]
     # Bullet.slack = { webhook_url: 'http://some.slack.url', channel: '#default', username: 'notifier' }
   end
+  
+  #for Devise
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
 end

@@ -1,7 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+# one:
+#   name: MyString
 
-two:
-  name: MyString
+# two:
+#   name: MyString2
+
+# one:
+#   name: MyString
+#   email: user@example.com
+#   encrypted_password: password1
+
+# two:
+#   name: MyString2
+#   email: user2@example.com
+#   encrypted_password: password2
