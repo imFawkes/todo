@@ -7,5 +7,5 @@ class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
   has_many :lists, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: { case_sensitive: false }, length: {maximum: 16}
+  # validates :name, presence: true, uniqueness: { case_sensitive: false }, length: {maximum: 16}
 end

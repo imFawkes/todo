@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @users = User.all
   end
 
   def show
-    @user = User.includes(tasks: [:lists, :subtasks], lists: [:tasks]).find(params[:id])
+    # @user = User.includes(tasks: [:lists, :subtasks], lists: [:tasks]).find(params[:id])
+    @user = current_user
   end
 
   def new
@@ -41,7 +44,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:username, :email, :password)
   end
 
 end

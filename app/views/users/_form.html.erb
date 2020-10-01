@@ -1,9 +1,18 @@
 <div>
   <%= form_with model: @user do |form| %>
     <p>
-      <span><%= form.label :name %></span>
-      <span><%= form.text_field :name %></span>
+      <span><%= form.label :username %></span>
+      <span><%= form.text_field :username %></span>
     </p>
+    <p>
+      <span><%= form.label :email %></span>
+      <span><%= form.email_field :email %></span>
+    </p>
+    <p>
+      <span><%= form.label :password %></span>
+      <span><%= form.text_field :password %></span>
+    </p>
+
     <p>
       <span><%= form.submit %></span>
     </p>
