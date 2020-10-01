@@ -1,24 +1,27 @@
 class TasksListsController < ApplicationController
-  def add_task_list
+  # add task to list
+  def create
     @user = User.find(params[:user_id])
-    @task = @user.tasks.find(params[:task_id]) #strong parameters?
+    @task = @user.tasks.find(params[:id]) #strong parameters?
     @list = @user.lists.find(params[:list_id]) #strong parameters?
     @task.lists << @list
-    redirect_to user_path(@user)
+    redirect_to user_path(current_user)
   end
 
-  def change_task_list
+  # move task from list1 to list2
+  def update
     @user = User.find(params[:user_id])
-    @task = @user.tasks.find(params[:task_id])
-    @tasks_list = @task.tasks_lists.find_by(task_id: params[:task_id])
+    @task = @user.tasks.find(params[:id])
+    @tasks_list = @task.tasks_lists.find_by(task_id: params[:id])
     @tasks_list[:list_id] = params[:list_id] #strong parameters?
     @tasks_list.save
     redirect_to user_path(@user)
   end
 
-  def delete_task_list
+  # extract task from list
+  def destroy
     @user = User.find(params[:user_id])
-    @task = @user.tasks.find(params[:task_id])
+    @task = @user.tasks.find(params[:id])
     @list = @user.lists.find(params[:list_id])
     @task.lists.destroy(@list)
     redirect_to user_path(@user)
