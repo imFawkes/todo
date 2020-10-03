@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   root "home#show"
 
   resources :users do
-    resources :tasks, only: [:create, :show, :destroy] do
-      resources :subtasks,  only: [:create, :show, :destroy]
+    resources :tasks, only: [:create, :destroy] do
+      resources :subtasks,  only: [:create, :destroy]
       member do
         post "/create_tasks_list", to: "tasks_lists#create"
         patch "/update_tasks_list", to: "tasks_lists#update"
@@ -14,6 +14,6 @@ Rails.application.routes.draw do
         delete "/destroy_tasks_list", to: "tasks_lists#destroy"  
       end
     end
-    resources :lists, only: [:create, :show, :destroy]
+    resources :lists, only: [:create, :destroy]
   end
 end
