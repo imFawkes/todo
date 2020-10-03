@@ -1,7 +1,10 @@
-<% @user.lists.each do |list|%>
-  <p>
-    <span><%= list.name %></span>
-    <span><%= link_to "Delete List", user_list_path(@user, list), method: :delete, data: { confirm: "Are you sure?" } %></span>
-  </p>
-<% end %>
-<%= render partial: "lists/new" %>
+<div class = "lists">
+  <h2>User Lists</h2>
+  <% @user.lists.each do |list|%>
+    <p>
+      <span><%= list.name %></span>
+      <span><%= link_to "Delete List", user_list_path(@user, list), method: :delete, data: { confirm: "Are you sure?" } %></span>
+    </p>
+  <% end %>
+  <%= render partial: "lists/new" %>
+</div>

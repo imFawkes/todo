@@ -1,0 +1,8 @@
+<div class = "tasks-unsorted">
+  <h2>Unsorted Tasks</h2>
+  <% @user.tasks.reverse_each do |task|%>
+    <% if task.lists.none? %>
+      <%= render partial: "tasks/show", locals: { task: task } %>
+    <% end %>
+  <% end %>
+</div>

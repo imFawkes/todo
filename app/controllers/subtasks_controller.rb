@@ -3,7 +3,7 @@ class SubtasksController < ApplicationController
     @user = User.find(params[:user_id])
     @task = @user.tasks.find(params[:task_id])
     @task.subtasks.create(subtask_params)
-    redirect_to user_path(@user)
+    redirect_to root_path
   end
 
   def destroy
@@ -11,7 +11,7 @@ class SubtasksController < ApplicationController
     @task = @user.tasks.find(params[:task_id])
     @subtask = @task.subtasks.find(params[:id])
     @subtask.destroy
-    redirect_to user_path(@user)
+    redirect_to root_path
   end
 
 

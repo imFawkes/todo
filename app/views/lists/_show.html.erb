@@ -1,6 +1,11 @@
+<div class = "list">
+
 <h2>List: <%= list.name %></h2>
 
 <% list.tasks.each do |task|%>
   <%= render partial: "tasks/show", locals: {task: task} %>
 <% end %>
+
+</div>
+
 

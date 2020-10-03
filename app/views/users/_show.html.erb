@@ -1,0 +1,31 @@
+<h1 class= "header">ToDo: <%= @user.username %></h1>
+
+  <div class = "navi">
+    <h2>Navigation</h2>
+    <%= link_to edit_user_registration_path do %>
+      <p>Profile Settings</p>
+    <% end %>
+    <p><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></p>
+  </div>
+</div>
+
+
+<div class = "columns">
+  
+  <div class = "column column-left">
+    <%= render partial: "lists/index" %>
+  </div>
+
+  <div class = "column column-center">
+    <%= render partial: "tasks/new" %>
+
+    <%= render partial: "tasks/index_unsorted"%>
+
+    <% @user.lists.each do |list|%>
+      <%= render partial: "lists/show", locals: { list: list }%>
+    <% end %>
+  </div>
+
+</div>
+
+
