@@ -14,7 +14,6 @@ class SubtasksController < ApplicationController
     redirect_to root_path
   end
 
-
   private
   def subtask_params
     params.require(:subtask).permit(:content)
