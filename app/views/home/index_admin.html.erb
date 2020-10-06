@@ -1,13 +1,5 @@
 <%= render partial: "shared/navi"%>
 
-<p> hello admin))) </p>
+<p style = "color: green"> hello admin))) </p>
 
-<div>
-  <h2>Users List</h2>
-  <% User.all.each do |user|%>
-    <p>
-      <span>Username: <%= user.username %>,</span>
-      <span>Role: <%= user.role %></span>
-    </p>
-  <% end %>
-</div>
+<%= render partial: "admin/users/index"%>

@@ -1,0 +1,9 @@
+<div>
+  <h2>Users List</h2>
+  <% User.all.each do |user|%>
+    <p>
+      <span>Username: <%= user.username %>,</span>
+      <span>Role: <%= user.role %></span>
+    </p>
+  <% end %>
+</div>

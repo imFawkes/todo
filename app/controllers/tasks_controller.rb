@@ -5,6 +5,7 @@ class TasksController < ApplicationController
     redirect_to root_path
   end
 
+  # how to create simple (w/o js) form for updating task?
   # def update
   #   @user = User.find(params[:user_id])
   #   @task = @user.tasks.find(params[:id])
