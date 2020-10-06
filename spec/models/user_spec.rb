@@ -17,7 +17,7 @@ RSpec.describe User, type: :model do
       expect(user.save).to be false
     end
 
-    it "should not save user w/o username" do
+    it "should save user w/o username" do
       user.username = "Tom Marvolo Riddle"
 
       expect(user.save).to be true
