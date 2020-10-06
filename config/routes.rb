@@ -2,7 +2,7 @@ Rails.application.routes.draw do
     
   devise_for :users, path: ""
   
-  root "home#show"
+  root "home#index"
 
   resources :users do
     resources :tasks, only: [:create, :destroy] do
