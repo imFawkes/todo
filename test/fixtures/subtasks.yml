@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  content: MyString
-  task: one
+# Subtask1:
+#   content: oooooh
+#   task: task1
 
-two:
-  content: MyString
-  task: two
+# Subtask2:
+#   content: you're a loaded gun
+#   task: task1
+
+# Subtask3:
+#   content: yeeeah
+#   task: task1

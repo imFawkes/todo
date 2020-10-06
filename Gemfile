@@ -64,3 +64,7 @@ gem 'devise'
 
 # add PostgreSQL ActiveRecord adapter.
 gem "pg", "~> 1.2"
+
+group :test, :development do
+  gem 'rspec-rails', '~> 4.0.1'
+end

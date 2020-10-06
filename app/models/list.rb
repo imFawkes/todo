@@ -3,5 +3,5 @@ class List < ApplicationRecord
   has_many :tasks_lists, dependent: :destroy
   has_many :tasks, through: :tasks_lists
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 50 }
 end

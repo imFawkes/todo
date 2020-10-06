@@ -1,17 +1,22 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   name: MyString
+user_w_username_filled:
+  username: Halsey
+  email: user1@example.com
+  # w/o password at all as now  #why works?
+  # encrypted_password:         #why works??
+  # encrypted_password: 1       #why works??
+  # encrypted_password: 123456  #why works??
+  # password: 123456            #why don't works??
 
-# two:
-#   name: MyString2
+user_w_username_long_filled:
+  username: useruser10useruser10useruser10odin
+  email: user2@example.com
 
-# one:
-#   name: MyString
-#   email: user@example.com
-#   encrypted_password: password1
+user_w_username_not_filled:
+  username:
+  email: user3@example.com
 
-# two:
-#   name: MyString2
-#   email: user2@example.com
-#   encrypted_password: password2
+user_for_tasks: 
+  username: Mefisto
+  email: user4@example.com

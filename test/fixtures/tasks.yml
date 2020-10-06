@@ -1,7 +1,22 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  content: MyString
+task_w_content_filled:
+  content: Shot through the heart
+  user: user_for_tasks
 
-two:
-  content: MyString
+task_w_content_not_filled:
+  content:
+  user: user_for_tasks
+
+task:
+  content: And you're to blame
+  user: user_for_tasks
+
+# task3:
+#   content: Darlin', you give love a bad name
+
+# task4:
+#   content: An angel's smile is what you sell
+
+# task5:
+#   content: You promise me heaven, then put me through hell
