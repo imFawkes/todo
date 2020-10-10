@@ -2,6 +2,6 @@ class TasksList < ApplicationRecord
   belongs_to :task
   belongs_to :list
 
-  #task have to be included only 1 of users lists
-  validates_uniqueness_of :task
+  # task can have only 1 custom list
+  validates_uniqueness_of :task_id
 end
