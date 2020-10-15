@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   def create
+    # ! переделать
     creator = Lists::Create.new
 
     result = creator.call(params)

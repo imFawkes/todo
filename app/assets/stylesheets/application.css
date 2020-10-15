@@ -23,6 +23,14 @@
    color: black;
  }
 
+.alert {
+  background-color: rgb(231, 111, 111);
+}
+
+.notice {
+  background-color: rgb(111, 231, 121);
+}
+
 .header {
   background-color: royalblue;
   color: aliceblue;
@@ -50,6 +58,10 @@
 }
 
 .column-center {
+  flex: 1 1 0px;
+}
+
+.column-right {
   flex: 1 1 0px;
 }
 

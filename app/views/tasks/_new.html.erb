@@ -1,5 +1,5 @@
 <div class= "task-new">
-  <%= form_with model: [@user, Task.new] do |form| %>
+  <%= form_with model: [user, Task.new] do |form| %>
     <span>Add a task:</span>
     <span><%= form.text_field :content %></span>
     <span><%= form.submit "Add Task" %></span>

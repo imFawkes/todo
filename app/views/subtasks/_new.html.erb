@@ -1,5 +1,5 @@
 <div class= "subtask-new">
-  <%= form_with url: user_task_subtasks_path(@user, task), scope: "subtask"  do |form| %>
+  <%= form_with url: user_task_subtasks_path(user, task), scope: "subtask"  do |form| %>
     <span><%= form.text_field :content %></span>
     <span><%= form.submit "Add Subtask" %></span>
   <% end %>

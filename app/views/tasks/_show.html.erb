@@ -9,16 +9,16 @@
   <div class = "task-subtasks">
     <h4>Subtasks of this task:</h4>
     <% task.subtasks.each do |subtask|%>
-      <%= render partial: "subtasks/show", locals: { task: task, subtask: subtask } %>
+      <%= render partial: "subtasks/show", locals: { user: user, task: task, subtask: subtask } %>
     <% end %>
-    <%= render partial: "subtasks/new", locals: { task: task } %>
+    <%= render partial: "subtasks/new", locals: { user: user, task: task } %>
   </div>
 
   <div class = "task-lists">
     <h4>Lists of this task:</h4>
-    <%= render partial: "tasks_lists/index", locals: { task: task }%>
+    <%= render partial: "tasks_lists/index", locals: { user: user, task: task }%>
   </div>
 
-  <p><%= link_to "Delete Task", user_task_path(@user, task), method: :delete, data: { confirm: "Are you sure?" } %></p>
+  <p><%= link_to "Delete Task", user_task_path(user, task), method: :delete, data: { confirm: "Are you sure?" } %></p>
 </div>
 

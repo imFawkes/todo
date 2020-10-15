@@ -3,22 +3,22 @@
 <% end %>
 
 <p>
-  <%= form_with url: create_tasks_list_user_task_path(@user, task) do |form| %>
-    <%= form.collection_select(:list_id, @user.lists, "id", "name") %>
+  <%= form_with url: create_tasks_list_user_task_path(user, task) do |form| %>
+    <%= form.collection_select(:list_id, user.lists, "id", "name") %>
     <%= form.submit "Add to List" %>
   <% end %>
 </p>
 
 <p>
-  <%= form_with url: update_tasks_list_user_task_path(@user, task), method: :patch do |form| %>
-    <%= form.collection_select(:list_id, @user.lists, "id", "name") %>
+  <%= form_with url: update_tasks_list_user_task_path(user, task), method: :patch do |form| %>
+    <%= form.collection_select(:list_id, user.lists, "id", "name") %>
     <%= form.submit "Change List" %>
   <% end %>
 </p>
 
 <p>
-  <%= form_with url: destroy_tasks_list_user_task_path(@user, task), method: :delete do |form| %>
-    <%= form.collection_select(:list_id, @user.lists, "id", "name") %>
+  <%= form_with url: destroy_tasks_list_user_task_path(user, task), method: :delete do |form| %>
+    <%= form.collection_select(:list_id, user.lists, "id", "name") %>
     <%= form.submit "Delete from List" %>
   <% end %>
 </p>

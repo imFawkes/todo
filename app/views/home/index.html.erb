@@ -2,16 +2,18 @@
 <div class = "columns">
   
   <div class = "column column-left">
-    <%= render partial: "lists/index" %>
+    <%= render partial: "lists/index", locals: { user: user } %>
   </div>
 
   <div class = "column column-center">
-    <%= render partial: "tasks/new" %>
+    <%= render partial: "tasks/new", locals: { user: user } %>
 
-    <%= render partial: "tasks/index_unsorted"%>
+    <%= render partial: "tasks/index_unsorted", locals: { user: user } %>
+  </div>
 
-    <% @user.lists.each do |list|%>
-      <%= render partial: "lists/show", locals: { list: list }%>
+  <div class = "column column-right">
+    <% user.lists.each do |list|%>
+      <%= render partial: "lists/show", locals: { user: user, list: list }%>
     <% end %>
   </div>
 

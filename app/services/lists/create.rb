@@ -1,4 +1,5 @@
 class Lists::Create
+    # ! переделать
   Result = Struct.new(:success?, :errors, :object)
 
   def call(params)

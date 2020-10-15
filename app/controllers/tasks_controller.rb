@@ -1,8 +1,17 @@
 class TasksController < ApplicationController
   def create
-    @user = User.find(params[:user_id])
-    @user.tasks.create(task_params)
-    redirect_to root_path
+    result = Tasks::Create.new(params).call
+    task = result.object #
+    user = result.user #
+    if result.success?
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: result.error_text }
+        format.js { render 'show', locals: { user: user, task: task } }
+      end
+    else
+      redirect_to root_path, alert: result.error_text
+    end
+
   end
 
   # how to create simple (w/o js) form for updating task?
