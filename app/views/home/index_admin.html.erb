@@ -1,5 +1,5 @@
-<%= render partial: "shared/navi"%>
+<%= render partial: "shared/navi", locals: { user: user } %>
 
-<p style = "color: green"> hello admin))) </p>
+<h2> Admin Panel </h2>
 
 <%= render partial: "admin/users/index"%>

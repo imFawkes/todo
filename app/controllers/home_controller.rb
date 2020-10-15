@@ -8,7 +8,7 @@ class HomeController < ApplicationController
       @user = User.includes(tasks: [:lists, :subtasks], lists: [:tasks]).find(current_user[:id])
       render 'index', locals: { user: @user }
     elsif @user.role.downcase == 'admin'
-      render 'index_admin'
+      render 'index_admin', locals: { user: @user }
     end
   end
 end
