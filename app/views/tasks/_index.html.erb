@@ -1,0 +1,5 @@
+<div class = "listAll">
+  <% user.tasks.reverse_each do |task|%>
+      <%= render partial: "tasks/show", locals: { user: user, task: task } %>
+  <% end %>
+</div>

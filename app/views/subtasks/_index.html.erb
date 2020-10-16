@@ -1,0 +1,6 @@
+<div class = "subtasksAll">
+  <% task.subtasks.each do |subtask|%>
+    <%= render partial: "subtasks/show", locals: { user: user, task: task, subtask: subtask } %>
+  <% end %>
+  <%= render partial: "subtasks/new", locals: { user: user, task: task } %>
+</div>

@@ -1,19 +1,35 @@
 <%= render partial: "shared/navi", locals: { user: user } %>
-<div class = "columns">
+<div class = "columnsApp">
   
-  <div class = "column column-left">
+  <div class = "columnLeft">
     <%= render partial: "lists/index", locals: { user: user } %>
   </div>
 
-  <div class = "column column-center">
+  <div class = "columnCenter">
+    <h2 class = "columnCenter-header"> All Tasks</h2>
+
     <%= render partial: "tasks/new", locals: { user: user } %>
 
-    <%= render partial: "tasks/index_unsorted", locals: { user: user } %>
-  </div>
+    <%= render partial: "tasks/index", locals: { user: user } %>
 
-  <div class = "column column-right">
     <% user.lists.each do |list|%>
       <%= render partial: "lists/show", locals: { user: user, list: list }%>
+    <% end %>
+  </div>
+
+  <div class = "columnRight">
+    <h2 class = "columnRight-header">Subtasks</h2>
+
+    <% user.tasks.each do |task|%>
+      <div class = "subtaskHeader">Task: <b><%= task.content %></b></div>
+      
+      <% if task.subtasks.none?%>
+       <div class = "subtasks-empty">No subtasks yet.</div>
+      <% end %>
+
+      <div class = "subtasks">
+        <%= render partial: "subtasks/index", locals: { user: user, task: task } %>
+      </div>
     <% end %>
   </div>
 

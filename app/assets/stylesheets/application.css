@@ -14,6 +14,7 @@
  *= require_self
  */
 
+/* document */
  body {
   background-color: #f4f4f4;
   font-family: "Arial";
@@ -21,6 +22,10 @@
 
  a {
    color: black;
+ }
+
+ h2 {
+  margin: 0;
  }
 
 .alert {
@@ -43,7 +48,9 @@
   border: 1px solid lightgray;
 }
 
-.columns {
+/* main structure */
+
+.columnsApp {
   display: flex;
   /* justify-content: center; */
   /* align-items: stretch; */
@@ -53,21 +60,54 @@
   border: 1px solid lightgray;
 }
 
-.column-left {
+.columnLeft {
   width: 300px;
+  border: 1px solid lightgray;
+
 }
 
-.column-center {
+.columnCenter {
+  flex: 2 1 0px;
+  border: 1px solid lightgray;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.columnRight {
+  flex: 1 2 0px;
+  padding: 20px;
+  border: 1px solid lightgray;
+}
+
+/* columnCenter */
+
+.columnCenter-header {
+  text-align: center;
+}
+
+
+/* taskForm */
+
+.taskForm {
+  display: flex;
+  padding: 20px;
+
+}
+
+.taskForm-header {
+  margin-right: 20px;
+}
+
+.taskForm-input {
   flex: 1 1 0px;
 }
 
-.column-right {
-  flex: 1 1 0px;
+.taskForm-button {
+  margin-left: 20px;
 }
 
-.task-new, .tasks-unsorted, .list, .lists, .links {
-  background-color: #ffffff;
-}
+/* task */
 
 .task-new {
   text-align: center;
@@ -75,4 +115,104 @@
 
 .task {
   background-color: #e9edff;
+  padding: 20px;
+  display: flex;
+  border: 1px solid lightgray;
 }
+
+.task-header {
+  margin-right: 20px;
+}
+
+.task-content {
+  flex: 1 1 0px;
+}
+
+.task-deleteLink {
+  margin-left: 20px;
+}
+
+/* list */
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.listHeader {
+  text-align: center;
+  padding: 20px;
+}
+
+/* columnRight */
+
+.columnRight-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* subtasks */
+
+.subtask {
+  background-color: #e9edff;
+  padding: 20px;
+  display: flex;
+  border: 1px solid lightgray;
+}
+
+.subtask-header {
+  margin-right: 20px;
+}
+
+.subtask-content {
+  flex: 1 1 0px;
+}
+
+.subtask-deleteLink {
+  margin-left: 20px;
+}
+
+/* subtask for each task */
+
+.subtaskHeader {
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.subtasks-empty {
+  padding-left: 20px;
+}
+
+/* subtaskForm */
+
+.subtaskForm {
+  display: flex;
+  padding: 20px;
+}
+
+.subtaskForm-input {
+  flex: 1 1 0px;
+}
+
+.subtaskForm-button {
+  margin-left: 20px;
+}
+
+/* 
+.taskForm {
+  display: flex;
+  padding: 20px;
+
+}
+
+.taskForm-header {
+  margin-right: 20px;
+}
+
+.taskForm-input {
+  flex: 1 1 0px;
+}
+
+.taskForm-button {
+  margin-left: 20px;
+} */

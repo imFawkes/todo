@@ -1,11 +1,10 @@
 // insert created task as 1st element in unsorted list
-parentElement = document.getElementsByClassName("tasks-unsorted-list")[0];
+parentElement = document.getElementsByClassName("listAll")[0];
 theFirstChild = parentElement.firstChild;
 newElement = document.createElement("p");
-newElement.innerHTML = "<%= j render partial: "tasks/show", locals: { user: user, task: task } %>";
 parentElement.insertBefore(newElement, theFirstChild);
+newElement.outerHTML = "<%= j render partial: "tasks/show", locals: { user: user, task: task } %>";
 
 // clear task input
 input = document.getElementById("task_content")
 input.value = ""
-

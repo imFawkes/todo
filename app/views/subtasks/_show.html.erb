@@ -1,4 +1,5 @@
-<p>
-  <span><%= subtask.content %></span>
-  <span><%= link_to "Delete Subask", user_task_subtask_path(user, task, subtask), method: :delete, data: { confirm: "Are you sure?" } %></span>
-<p>
+<div class = "subtask">
+  <div class = "subtask-header">Subtask</div>
+  <div class = "subtask-content"><%= subtask.content %></div>
+  <div class = "subtask-deleteLink"><%= link_to "Delete Subask", user_task_subtask_path(user, task, subtask), method: :delete, data: { confirm: "Are you sure?" } %></div>
+</div>
