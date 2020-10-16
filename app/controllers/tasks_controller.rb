@@ -1,12 +1,12 @@
 class TasksController < ApplicationController
   def create
     result = Tasks::Create.new(params).call
-    task = result.object #
-    user = result.user #
+    # task = result.object 
+    # user = current_user
     if result.success?
       respond_to do |format|
         format.html { redirect_to root_path, notice: result.error_text }
-        format.js { render 'show', locals: { user: user, task: task } }
+        format.js { render 'show', locals: { user: current_user, task: result.object } }
       end
     else
       redirect_to root_path, alert: result.error_text

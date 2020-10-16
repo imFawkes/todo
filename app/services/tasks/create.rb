@@ -1,5 +1,5 @@
 class Tasks::Create
-  Result = Struct.new(:success?, :error_text, :object, :user) #
+  Result = Struct.new(:success?, :error_text, :object)
 
   def initialize(params)
     @params = params
@@ -10,9 +10,9 @@ class Tasks::Create
     task = user.tasks.new(task_params)
 
     if task.save
-      Result.new(true, 'Task created.', user.tasks.last, user) #
+      Result.new(true, 'Task created.', user.tasks.last)
     else
-      Result.new(false, 'Task should have content.', task, user) #
+      Result.new(false, 'Task should have content.', task)
     end
   end
 
