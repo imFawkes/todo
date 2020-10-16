@@ -92,6 +92,7 @@
 .taskForm {
   display: flex;
   padding: 20px;
+  border: 1px solid lightgray;
 
 }
 
@@ -148,7 +149,6 @@
 
 .columnRight-header {
   text-align: center;
-  margin-bottom: 20px;
 }
 
 /* subtasks */
@@ -175,12 +175,12 @@
 /* subtask for each task */
 
 .subtaskHeader {
-  padding-bottom: 20px;
-  text-align: center;
+  padding: 20px;
 }
 
 .subtasks-empty {
-  padding-left: 20px;
+  padding: 20px;
+  border: 1px solid lightgray;
 }
 
 /* subtaskForm */
@@ -188,6 +188,7 @@
 .subtaskForm {
   display: flex;
   padding: 20px;
+  border: 1px solid lightgray;
 }
 
 .subtaskForm-input {

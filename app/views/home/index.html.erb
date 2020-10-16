@@ -21,7 +21,7 @@
     <h2 class = "columnRight-header">Subtasks</h2>
 
     <% user.tasks.each do |task|%>
-      <div class = "subtaskHeader">Task: <b><%= task.content %></b></div>
+      <div class = "subtaskHeader"><b>Task:</b> <%= task.content %></div>
       
       <% if task.subtasks.none?%>
        <div class = "subtasks-empty">No subtasks yet.</div>
