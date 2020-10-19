@@ -1,5 +1,8 @@
 <div class = "task">
   <div class = "task-header">Task</div>
   <div class = "task-content"><%= task.content %></div>
+  <div class = "toggle-subtask">
+    <%= button_tag 'Toggle Subtasks', type: 'button', name: 'toggle_subtasks', id:'toggle_subtasks', class: 'toggle_subtasks' %>
+  </div>
   <div class = "task-deleteLink"><%= link_to "Delete Task", user_task_path(user, task), method: :delete, data: { confirm: "Are you sure?" } %></div>
 </div>

@@ -198,3 +198,10 @@
 .subtaskForm-button {
   margin-left: 20px;
 }
+
+.toggle_subtasks {
+}
+
+.hide {
+  display: none;
+}
