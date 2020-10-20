@@ -4,7 +4,7 @@ class ListsController < ApplicationController
 
     if result.success?
       redirect_to root_path
-      # render 'create', locals: { user: current_user, list: result.object }
+      # render 'create', locals: { user: current_user, list: result.object } # no js temlate yet
     else
       redirect_to root_path, alert: result.errors
     end
@@ -15,7 +15,7 @@ class ListsController < ApplicationController
 
     if result.success?
       redirect_to root_path
-      # render 'destroy', formats: :js, locals: { user: current_user }
+      # render 'destroy', formats: :js, locals: { user: current_user } # no js temlate yet
     else
       redirect_to root_path, alert: result.errors
     end
