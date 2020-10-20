@@ -1,4 +1,4 @@
-class Tasks::Create
+class Tasks::Destroy
   Result = Struct.new(:success?, :errors, :object)
 
   def initialize(params, current_user)
@@ -15,11 +15,15 @@ class Tasks::Create
       return Result.new(false, ['No access error'], nil) 
     end
 
-    task = user.tasks.new(task_params)
-    if task.save
-      Result.new(true, [], task)
+    task = user.tasks.find_by(id: @params[:id])
+    unless task
+      return Result.new(false, ['Task not found'], nil) 
+    end
+
+    if task.destroy
+      Result.new(true, [], nil)
     else
-      Result.new(false, task.errors, task)
+      Result.new(false, task.errors, task) # а такие могут быть?
     end
   end
 

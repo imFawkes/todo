@@ -8,7 +8,6 @@ const toggleSubtasksButton = () => {
   const btns = document.querySelectorAll('.toggle_subtasks')
 
   for (let btn of btns) {
-    console.log('value')
     btn.addEventListener( "click" , handler)
   }
 } 
