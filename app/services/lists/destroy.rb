@@ -19,6 +19,10 @@ class Lists::Destroy
     unless list
       return Result.new(false, ['List not found'], nil) 
     end
+    if list.isDefault
+      return Result.new(false, ['Default list can not be destroyed'], nil) 
+    end
+
 
     if list.destroy
       Result.new(true, [], nil)

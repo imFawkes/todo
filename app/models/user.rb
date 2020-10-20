@@ -1,18 +1,8 @@
 class User < ApplicationRecord
   enum role: [:user, :admin]
 
-  # after_initialize :set_default_role, :if => :new_record?
-  before_save :set_default_role
-  after_save :create_unsorted_list
-
-  def set_default_role
-    self.role ||= :user
-  end
-
-  def create_unsorted_list
-    list = self.lists.new(name: 'Unsorted')
-    list.save
-  end
+  after_initialize :set_default_role, if: :new_record?
+  around_save :create_default_lists, if: :new_record?
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -23,4 +13,18 @@ class User < ApplicationRecord
   has_many :lists, dependent: :destroy
 
   validates :username, presence: true, length: { maximum: 30 }
+
+
+  private
+  
+  def set_default_role
+    self.role ||= :user
+  end
+
+  def create_default_lists
+    yield
+    list = self.lists.new(name: 'Unsorted', isDefault: true)
+    list.save
+  end
+
 end
