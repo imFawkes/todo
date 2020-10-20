@@ -7,7 +7,6 @@ class TasksController < ApplicationController
     else
       redirect_to root_path, alert: result.errors
     end
-
   end
 
   def destroy
@@ -19,13 +18,5 @@ class TasksController < ApplicationController
     else
       redirect_to root_path, alert: result.errors
     end
-
   end
-
-  # def destroy
-  #   @user = User.find(params[:user_id])
-  #   @task = @user.tasks.find(params[:id])
-  #   @task.destroy
-  #   redirect_to root_path
-  # end
 end

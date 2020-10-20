@@ -1,31 +1,23 @@
 class ListsController < ApplicationController
   def create
-    @user = User.find(params[:user_id])
-    list = @user.lists.create(list_params)
-    redirect_to root_path
+    result = Lists::Create.new(params, current_user).call
 
-    # ! переделать
-    # creator = Lists::Create.new
-
-    # result = creator.call(params)
-
-    # if result.success?
-    #   render json: { object: result.object.to_json, code: 200 }
-    # else
-    #   render json: { errors: result.errors.messages, code: 422 }
-    # end
+    if result.success?
+      redirect_to root_path
+      # render 'create', locals: { user: current_user, list: result.object }
+    else
+      redirect_to root_path, alert: result.errors
+    end
   end
 
   def destroy
-    @user = User.find(params[:user_id])
-    list = @user.lists.find(params[:id])
-    list.destroy
-    redirect_to root_path
-  end
+    result = Lists::Destroy.new(params, current_user).call
 
-  private
-
-  def list_params
-    params.require(:list).permit(:name)
+    if result.success?
+      redirect_to root_path
+      # render 'destroy', formats: :js, locals: { user: current_user }
+    else
+      redirect_to root_path, alert: result.errors
+    end
   end
 end

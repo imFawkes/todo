@@ -1,27 +1,31 @@
 class Lists::Create
-    # ! переделать
   Result = Struct.new(:success?, :errors, :object)
 
-  def call(params)
-    user = User.find_by(id: params[:user_id])
+  def initialize(params, current_user)
+    @params = params
+    @current_user = current_user
+  end
 
-    if user.nil?
-      Result.new(false, ['user not found'], nil)
-      return
+  def call
+    user = User.find_by(id: @params[:user_id])
+    unless user
+      return Result.new(false, ['User not found'], nil)
+    end
+    unless user == @current_user
+      return Result.new(false, ['No access error'], nil) 
     end
 
     list = user.lists.new(list_params)
-
-    if list.save!
+    if list.save
       Result.new(true, [], list)
     else
-      Result.new(false, list.errors, nil)
+      Result.new(false, list.errors, list)
     end
   end
 
   private
 
   def list_params
-    params.require(:list).permit(:name)
+    @params.require(:list).permit(:name)
   end
 end
