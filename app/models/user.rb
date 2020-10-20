@@ -1,10 +1,17 @@
 class User < ApplicationRecord
   enum role: [:user, :admin]
 
-  after_initialize :set_default_role, :if => :new_record?
+  # after_initialize :set_default_role, :if => :new_record?
+  before_save :set_default_role
+  after_save :create_unsorted_list
 
   def set_default_role
     self.role ||= :user
+  end
+
+  def create_unsorted_list
+    list = self.lists.new(name: 'Unsorted')
+    list.save
   end
 
   # Include default devise modules. Others available are:

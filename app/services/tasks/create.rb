@@ -8,6 +8,7 @@ class Tasks::Create
   def call
     user = User.find_by(id: @params[:user_id])
     task = user.tasks.new(task_params)
+    task.list_id = '1'
 
     if task.save
       Result.new(true, 'Task created.', user.tasks.last)
