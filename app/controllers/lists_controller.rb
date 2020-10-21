@@ -3,8 +3,8 @@ class ListsController < ApplicationController
     result = Lists::Create.new(params, current_user).call
 
     if result.success?
-      redirect_to root_path
-      # render 'create', locals: { user: current_user, list: result.object } # no js temlate yet
+      # result.object пока отдаем бессмысленно, т.к. перезагружается вся колонка с lists
+      render 'home/reload_column_left', locals: { user: current_user, list: result.object }
     else
       redirect_to root_path, alert: result.errors
     end
@@ -14,8 +14,8 @@ class ListsController < ApplicationController
     result = Lists::Destroy.new(params, current_user).call
 
     if result.success?
-      redirect_to root_path
-      # render 'destroy', formats: :js, locals: { user: current_user } # no js temlate yet
+      # result.object пока отдаем бессмысленно, т.к. перезагружается вся колонка с lists
+      render 'home/reload_column_left', locals: { user: current_user, list: result.object }
     else
       redirect_to root_path, alert: result.errors
     end

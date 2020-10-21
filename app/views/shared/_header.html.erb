@@ -1,0 +1,7 @@
+<header class = 'header'>
+<div class = 'header-header'><%= link_to "ToDo", root_path %></div>
+<% if user %>
+  <div class = 'header-profile'><%= link_to "Profile Settings: #{user.username}", edit_user_registration_path %></div>
+  <div class = 'header-signout'><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></div>
+<% end %>
+</header>

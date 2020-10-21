@@ -1,0 +1,21 @@
+<div class = "column-left">
+  <div class = 'lists-default-header'>Default lists</div>
+  <div class = 'lists-default'>
+    <% user.lists.each do |list|%>
+      <% if list.isDefault%>
+        <%= render partial: "lists/show", locals: { user: user, list: list } %>
+      <% end %>
+    <% end %>
+  </div>
+  
+  <div class = 'lists-sortable-header'>Sortable lists</div>
+  <div class = 'lists-sortable'> 
+    <% user.lists.each do |list|%>
+      <% unless list.isDefault%>
+        <%= render partial: "lists/show", locals: { user: user, list: list } %>
+      <% end %>
+    <% end %>
+  </div>
+  
+  <%= render partial: "lists/new", locals: { user: user } %>
+</div>

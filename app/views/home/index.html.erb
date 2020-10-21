@@ -1,36 +1,16 @@
-<%= render partial: "shared/navi", locals: { user: user } %>
-<div class = "columnsApp">
+<div class = "columns">
   
-  <div class = "columnLeft">
-    <%= render partial: "lists/index", locals: { user: user } %>
+  <%= render partial: "home/index_column_left", locals: { user: user } %>
+
+  <%= render partial: "home/index_column_center", locals: { user: user } %>
+
+  <div class = "column-right hide">
+    <div class = "column-right-subtasks">
+      <!-- reload_subtasks.js.erb work here -->
+    </div>
+    <div class = 'column-right-toggle'>
+      <%= button_tag 'Hide Subtasks', type: 'button', name: 'toggle_subtasks',
+          id:'toggle_subtasks', class: 'toggle_subtasks' %>
+    </div>
   </div>
-
-  <div class = "columnCenter">
-    <h2 class = "columnCenter-header"> All Tasks</h2>
-
-    <%= render partial: "tasks/new", locals: { user: user } %>
-
-    <%= render partial: "tasks/index", locals: { user: user } %>
-
-    <% user.lists.each do |list|%>
-      <%= render partial: "lists/show", locals: { user: user, list: list }%>
-    <% end %>
-  </div>
-
-  <div class = "columnRight">
-    <h2 class = "columnRight-header">Subtasks</h2>
-
-    <% user.tasks.each do |task|%>
-      <div class = "subtaskHeader"><b>Task:</b> <%= task.content %></div>
-      
-      <% if task.subtasks.none?%>
-       <div class = "subtasks-empty">No subtasks yet.</div>
-      <% end %>
-
-      <div class = "subtasks">
-        <%= render partial: "subtasks/index", locals: { user: user, task: task } %>
-      </div>
-    <% end %>
-  </div>
-
 </div>

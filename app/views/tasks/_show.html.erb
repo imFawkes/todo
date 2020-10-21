@@ -1,14 +1,18 @@
 <div class = "task">
-  <div class = "task-header">Task</div>
   <div class = "task-content"><%= task.content %></div>
-  <div class = "task-lits">
+  <div class = "task-lists">
     <%= form_with url: user_task_change_list_path(user, task), method: :patch do |form| %>
       <%= collection_select :task, :list_id, user.lists, :id, :name, selected: task.list_id %>
       <%= form.submit 'Change List'%>
     <% end %>
   </div>
-  <div class = "toggle-subtask">
-    <%= button_tag 'Toggle Subtasks', type: 'button', name: 'toggle_subtasks', id:'toggle_subtasks', class: 'toggle_subtasks' %>
+  <div class = "task-subtasks">
+    <%= form_with url: user_task_show_subtasks_path(user, task), method: :get do |form| %>
+      <%= form.submit 'Show Subtasks'%>
+    <% end %>
   </div>
-  <div class = "task-deleteLink"><%= link_to "Delete Task", user_task_path(user, task), method: :delete, remote: true, data: { confirm: "Are you sure?" } %></div>
+  <div class = "task-delete">
+    <%= link_to "Delete Task", user_task_path(user, task),
+        remote: true, method: :delete, data: { confirm: "Are you sure?" } %>
+  </div>
 </div>

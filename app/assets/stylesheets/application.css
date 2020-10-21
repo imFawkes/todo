@@ -19,100 +19,146 @@
   background-color: #f4f4f4;
   font-family: "Arial";
  }
-
- a {
-   color: black;
+ 
+ .alert {
+   background-color: rgb(231, 111, 111);
+ }
+ 
+ .notice {
+   background-color: rgb(111, 231, 121);
  }
 
- h2 {
-  margin: 0;
- }
-
-.alert {
-  background-color: rgb(231, 111, 111);
-}
-
-.notice {
-  background-color: rgb(111, 231, 121);
-}
-
+/* header */
 .header {
   background-color: royalblue;
-  color: aliceblue;
-  text-align: center;
-  margin: 0px;
-  padding: 0px;
-}
-
-.navi {
-  border: 1px solid lightgray;
-}
-
-/* main structure */
-
-.columnsApp {
   display: flex;
-  /* justify-content: center; */
-  /* align-items: stretch; */
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
 }
 
-.column {
-  border: 1px solid lightgray;
+.header a {
+  color: aliceblue;
+  text-decoration: none;
 }
 
-.columnLeft {
+.header a:hover {
+  color: rgb(154, 178, 202);
+  /* text-decoration: underline; */
+}
+
+.header-header {
+  color: aliceblue;
+  font-size: 32px;
+  font-weight: bold;
+  margin-right: auto;
+}
+
+.header-profile {
+  margin-right: 20px;
+
+}
+
+.header-signout {
+}
+
+/* main structure: 3 columns */
+
+.columns {
+  display: flex;
+}
+
+.column-left {
   width: 300px;
   border: 1px solid lightgray;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
 
 }
 
-.columnCenter {
-  flex: 2 1 0px;
+.column-center {
   border: 1px solid lightgray;
-  padding: 20px;
+  flex: 2 1 0px;
+  padding: 0 10px;
   display: flex;
   flex-direction: column;
 }
 
-.columnRight {
+.column-right {
+  border: 1px solid lightgray;
+  padding: 20px;
   flex: 1 2 0px;
+}
+
+/* column-left */
+
+.lists-default-header, .lists-sortable-header  {
+  font-size: 24px;
+  font-weight: bold;
   padding: 20px;
-  border: 1px solid lightgray;
 }
 
-/* columnCenter */
-
-.columnCenter-header {
-  text-align: center;
-}
-
-
-/* taskForm */
-
-.taskForm {
+.lists-default, .lists-sortable {
   display: flex;
-  padding: 20px;
+  flex-direction: column;
+}
+
+.list {
+  display: flex;
+  padding: 10px 20px;
   border: 1px solid lightgray;
+  background-color: #e9edff;
 
 }
 
-.taskForm-header {
-  margin-right: 20px;
+.list a {
+  color: rgb(100, 100, 100);
+  text-decoration: none;
 }
 
-.taskForm-input {
+.list a:hover {
+  color: black;
+}
+
+.list-name {
   flex: 1 1 0px;
 }
 
-.taskForm-button {
-  margin-left: 20px;
+.list-new {
+  padding: 20px;
+}
+
+/* column-center */
+
+
+/* task-new */
+
+.task-new-form {
+  display: flex;
+  padding: 10px 20px;
+  border: 1px solid lightgray;
+
+}
+
+.task-new-input {
+  flex: 1 1 0px;
+}
+
+.task-new-button {
+  margin-right: 20px;
+}
+
+/* tasks */
+
+.tasks-header {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px;
+  text-align: center;
 }
 
 /* task */
-
-.task-new {
-  text-align: center;
-}
 
 .task {
   background-color: #e9edff;
@@ -127,27 +173,44 @@
 
 .task-content {
   flex: 1 1 0px;
+  margin-right: 20px;
 }
 
-.task-deleteLink {
-  margin-left: 20px;
+.task-lists {
+  margin-right: 20px;
 }
 
-/* list */
+.task-subtasks {
+  margin-right: 20px;
+}
 
-.list {
+.task-delete {
+}
+
+.task a {
+  color: rgb(100, 100, 100);
+  text-decoration: none;
+}
+
+.task a:hover {
+  color: black;
+}
+
+/* column-right */
+
+.column-right {
+  padding: 20px 10px;
+}
+
+.subtasks {
   display: flex;
   flex-direction: column;
 }
 
-.listHeader {
-  text-align: center;
-  padding: 20px;
-}
-
-/* columnRight */
-
-.columnRight-header {
+.subtasks-header {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px;  
   text-align: center;
 }
 
@@ -160,47 +223,49 @@
   border: 1px solid lightgray;
 }
 
-.subtask-header {
-  margin-right: 20px;
-}
-
 .subtask-content {
   flex: 1 1 0px;
 }
 
-.subtask-deleteLink {
+.subtask-delete {
   margin-left: 20px;
 }
 
-/* subtask for each task */
-
-.subtaskHeader {
-  padding: 20px;
+.subtask a {
+  color: rgb(100, 100, 100);
+  text-decoration: none;
 }
 
-.subtasks-empty {
-  padding: 20px;
-  border: 1px solid lightgray;
+.subtask a:hover {
+  color: black;
 }
 
 /* subtaskForm */
 
-.subtaskForm {
+.subtask-new-form {
   display: flex;
   padding: 20px;
   border: 1px solid lightgray;
 }
 
-.subtaskForm-input {
+.subtask-new-input {
   flex: 1 1 0px;
 }
 
-.subtaskForm-button {
-  margin-left: 20px;
+.subtask-new-button {
+  margin-right: 20px;
+}
+
+.column-right-toggle {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .toggle_subtasks {
 }
+
+/* hiding elements */
 
 .hide {
   display: none;

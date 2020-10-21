@@ -2,7 +2,7 @@ export {toggleSubtasksButton}
 
 const toggleSubtasksButton = () => {
   const handler = () => {
-    document.querySelector(".columnRight").classList.toggle('hide')
+    document.querySelector(".column-right").classList.toggle('hide')
   }
 
   const btns = document.querySelectorAll('.toggle_subtasks')

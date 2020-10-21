@@ -1,8 +1,8 @@
-element = document.querySelector(".listAll")
+element = document.querySelector(".tasks")
 element.outerHTML = "<%= j render partial: "tasks/index", locals: { user: user } %>"
 
 // clear task input
-input = document.getElementById("task_content")
+input = document.querySelector("#task_content")
 input.value = ""
 
 

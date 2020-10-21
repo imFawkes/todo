@@ -1,10 +1,6 @@
 <div class = "lists">
-  <h2>User Lists</h2>
+  <h2 class = lists-header>User Lists</h2>
   <% user.lists.each do |list|%>
-    <p>
-      <span><%= list.name %></span>
-      <span><%= link_to "Delete List", user_list_path(user, list), method: :delete, data: { confirm: "Are you sure?" } %></span>
-    </p>
+    <%= render partial: "lists/show", locals: { user: user, list: list } %>
   <% end %>
-  <%= render partial: "lists/new", locals: { user: user } %>
 </div>

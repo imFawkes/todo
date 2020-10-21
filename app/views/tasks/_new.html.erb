@@ -1,7 +1,6 @@
-<div class = "taskFormBox">
-  <%= form_with model: [user, Task.new], class: "taskForm" do |form| %>
-    <div class = "taskForm-header">Add a task:</div>
-    <%= form.text_field :content, class: "taskForm-input" %>
-    <%= form.submit "Add Task", class: "taskForm-button" %>
+<div class = "task-new-box">
+  <%= form_with model: [user, Task.new], class: "task-new-form" do |form| %>
+    <%= form.submit "Add Task", class: "task-new-button" %>
+    <%= form.text_field :content, class: "task-new-input" %>
   <% end %>
 </div>
