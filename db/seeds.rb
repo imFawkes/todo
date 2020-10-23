@@ -6,26 +6,26 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user1 = User.create(
-  username: "SimpleUser",
-  email: "simpleuser@mail.ru",
-  password: "123456",
-  )
-task1 = user1.tasks.create(content: "Скачать фильм")
-task2 = user1.tasks.create(content: "Сходить в магазин")
-subtask1_task2 = task2.subtasks.create(content: "Молоко")
-subtask2_task2 = task2.subtasks.create(content: "Хлеб")
-subtask3_task2 = task2.subtasks.create(content: "Макароны")
-task3 = user1.tasks.create(content: "Скачать фильм")
-task4 = user1.tasks.create(content: "Выучить песню на гитаре")
-list1 = user1.lists.create(name: "Hobby")
-list1.tasks << task4
+# user1 = User.create(
+#   username: "SimpleUser",
+#   email: "simpleuser@mail.ru",
+#   password: "123456",
+#   )
+# task1 = user1.tasks.create(content: "Скачать фильм")
+# task2 = user1.tasks.create(content: "Сходить в магазин")
+# subtask1_task2 = task2.subtasks.create(content: "Молоко")
+# subtask2_task2 = task2.subtasks.create(content: "Хлеб")
+# subtask3_task2 = task2.subtasks.create(content: "Макароны")
+# task3 = user1.tasks.create(content: "Скачать фильм")
+# task4 = user1.tasks.create(content: "Выучить песню на гитаре")
+# list1 = user1.lists.create(name: "Hobby")
+# list1.tasks << task4
 
-user1 = User.create(
-  username: "Admin",
-  email: "admin@mail.ru",
-  password: "123456",
-  role: "admin"
-  )
+# user1 = User.create(
+#   username: "Admin",
+#   email: "admin@mail.ru",
+#   password: "123456",
+#   role: "admin"
+#   )
 
 
