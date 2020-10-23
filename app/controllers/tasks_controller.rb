@@ -1,10 +1,15 @@
 class TasksController < ApplicationController
+    # в create, destroy, change_list
+    # result.object пока отдаем бессмысленно, т.к. перезагружается вся колонка с tasks
+    # + для render eager load чтоб загрузить колонку
+
+
   def create
     result = Tasks::Create.new(params, current_user).call
-
+    
     if result.success?
-      # result.object пока отдаем бессмысленно, т.к. перезагружается вся колонка с tasks
-      render 'home/reload_column_center', formats: :js, locals: { user: current_user, task: result.object }
+      user = User.includes(:tasks, :lists).find_by(id: current_user[:id])
+      render 'home/reload_column_center', formats: :js, locals: { user: user, task: result.object }
     else
       redirect_to root_path, alert: result.errors
     end
@@ -14,8 +19,8 @@ class TasksController < ApplicationController
     result = Tasks::Destroy.new(params, current_user).call
 
     if result.success?
-      # result.object пока отдаем бессмысленно, т.к. перезагружается вся колонка с tasks
-      render 'home/reload_column_center', formats: :js, locals: { user: current_user, task: result.object }
+      user = User.includes(:tasks, :lists).find_by(id: current_user[:id])
+      render 'home/reload_column_center', formats: :js, locals: { user: user, task: result.object }
     else
       redirect_to root_path, alert: result.errors
     end
@@ -25,16 +30,24 @@ class TasksController < ApplicationController
     result = Tasks::ChangeList.new(params, current_user).call
 
     if result.success?
-      # result.object пока отдаем бессмысленно, т.к. перезагружается вся колонка с tasks
-      render 'home/reload_column_center', formats: :js, locals: { user: current_user, task: result.object }
+      user = User.includes(:tasks, :lists).find_by(id: current_user[:id])
+      render 'home/reload_column_center', formats: :js, locals: { user: user, task: result.object }
     else
       redirect_to root_path, alert: result.errors
     end
   end
 
+
+  # а тут и объект нормально отдаем
+  # и eager load в service
+  # так получилось, что тут отрисовка и логика совпали
   def show_subtasks
-    user = User.find_by(id: params[:user_id])
-    task = user.tasks.find_by(id: params[:task_id])
-    render 'home/reload_column_right', formats: :js, locals: { user: current_user, task: task }
+    result = Tasks::ShowSubtasks.new(params, current_user).call
+
+    if result.success?
+      render 'home/reload_column_right', formats: :js, locals: { user: current_user, task: result.object }
+    else
+      redirect_to root_path, alert: result.errors
+    end
   end
 end
