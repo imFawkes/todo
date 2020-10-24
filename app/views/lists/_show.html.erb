@@ -5,10 +5,12 @@
       <%= form.submit 'Show Tasks'%>
     <% end %>
   </div>
-  <div class = 'list-delete'>
-    <%= link_to "Delete List", user_list_path(user, list), 
-        method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
-  </div>
+  <% unless list.isDefault %>
+    <div class = 'list-delete'>
+      <%= link_to "Delete List", user_list_path(user, list), 
+          method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
+    </div>
+  <% end %>
 </div>
 
 
