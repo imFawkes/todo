@@ -1,15 +1,25 @@
 class TasksController < ApplicationController
-    # в create, destroy, change_list
-    # result.object пока отдаем бессмысленно, т.к. перезагружается вся колонка с tasks
-    # + для render eager load чтоб загрузить колонку
 
+  def index_list
+    result = Lists::IndexTasks.new(params, current_user).call
+
+    if result.success?
+      render partial: 'tasks/index_list_reload', locals: { user: current_user, list: result.object }
+    else
+      redirect_to root_path, alert: result.errors
+    end
+  end
+
+  # в create, destroy, change_list
+  # result.object пока отдаем бессмысленно, т.к. перезагружается вся колонка с tasks
+  # + для render eager load чтоб загрузить колонку
 
   def create
     result = Tasks::Create.new(params, current_user).call
     
     if result.success?
       user = User.includes(:tasks, :lists).find_by(id: current_user[:id])
-      render 'home/reload_column_center', formats: :js, locals: { user: user, task: result.object }
+      render 'home/reload_column_center', locals: { user: user, task: result.object }
     else
       redirect_to root_path, alert: result.errors
     end
@@ -20,7 +30,7 @@ class TasksController < ApplicationController
 
     if result.success?
       user = User.includes(:tasks, :lists).find_by(id: current_user[:id])
-      render 'home/reload_column_center', formats: :js, locals: { user: user, task: result.object }
+      render 'home/reload_column_center', locals: { user: user, task: result.object }
     else
       redirect_to root_path, alert: result.errors
     end
@@ -31,21 +41,7 @@ class TasksController < ApplicationController
 
     if result.success?
       user = User.includes(:tasks, :lists).find_by(id: current_user[:id])
-      render 'home/reload_column_center', formats: :js, locals: { user: user, task: result.object }
-    else
-      redirect_to root_path, alert: result.errors
-    end
-  end
-
-
-  # а тут и объект нормально отдаем
-  # и eager load в service
-  # так получилось, что тут отрисовка и логика совпали
-  def show_subtasks
-    result = Tasks::ShowSubtasks.new(params, current_user).call
-
-    if result.success?
-      render 'home/reload_column_right', formats: :js, locals: { user: current_user, task: result.object }
+      render 'home/reload_column_center', locals: { user: user, task: result.object }
     else
       redirect_to root_path, alert: result.errors
     end

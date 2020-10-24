@@ -7,7 +7,7 @@
     <% end %>
   </div>
   <div class = "task-subtasks">
-    <%= form_with url: user_task_show_subtasks_path(user, task), method: :get do |form| %>
+    <%= form_with url: user_task_subtasks_path(user, task), method: :get do |form| %>
       <%= form.submit 'Show Subtasks'%>
     <% end %>
   </div>

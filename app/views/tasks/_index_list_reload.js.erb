@@ -1,0 +1,2 @@
+element = document.querySelector(".tasks")
+element.outerHTML = "<%= j render partial: "tasks/index_list", locals: { user: user, list: list } %>"

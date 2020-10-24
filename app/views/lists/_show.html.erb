@@ -1,5 +1,10 @@
 <div class = "list">
   <div class = 'list-name'><%= list.name %></div>
+  <div class = "task-subtasks">
+    <%= form_with url: user_list_index_list_path(user, list), method: :get do |form| %>
+      <%= form.submit 'Show Tasks'%>
+    <% end %>
+  </div>
   <div class = 'list-delete'>
     <%= link_to "Delete List", user_list_path(user, list), 
         method: :delete, data: { confirm: "Are you sure?" }, remote: true %>

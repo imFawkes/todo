@@ -1,4 +1,4 @@
-class Tasks::ShowSubtasks
+class Subtasks::Index
   Result = Struct.new(:success?, :errors, :object)
 
   def initialize(params, current_user)

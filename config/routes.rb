@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   # resources :users do #alternative if user routes needed
   scope '/users/:user_id', as: 'user' do
     resources :tasks, only: [:create, :destroy] do
-      resources :subtasks,  only: [:create, :destroy]
-      get 'show_subtasks'
+      resources :subtasks,  only: [:index, :create, :destroy]
       match 'change_list', via: [:patch, :put]
     end
-    resources :lists, only: [:create, :destroy]
+    resources :lists, only: [:create, :destroy] do
+      get 'index_list', to: 'tasks#index_list'
+    end
   end
 end
