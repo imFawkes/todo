@@ -1,6 +1,6 @@
-<div class = "task-new-box">
-  <%= form_with model: [user, Task.new], class: "task-new-form" do |form| %>
+<div class= "task-new">
+  <%= form_with model: Task.new, class: "task-new-form" do |form| %>
+    <%= form.text_field :content, class: "task-new-input" %>
     <%= form.submit "Add Task", class: "task-new-button" %>
-    <%= form.text_field :content, class: "task-new-input", required: true %>
   <% end %>
 </div>

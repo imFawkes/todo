@@ -1,0 +1,7 @@
+<div class = "subtask">
+  <div class = 'subtask-data-content'><%= subtask.content %></div>
+  <div class = 'subtask-action-delete'>
+    <%= link_to "Delete Subtask", task_subtask_path(subtask.task, subtask), 
+        method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
+  </div>
+</div>

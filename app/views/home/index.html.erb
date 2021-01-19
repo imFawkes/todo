@@ -1,16 +1,28 @@
-<div class = "columns">
+<div class = 'columns'>
+  <div class = 'column-left'>
+    <div class = 'lists-header'>Lists</div>
+    <%= render partial: 'lists/index', locals: { lists: user.lists } %>
+    <%= render partial: 'lists/new' %>
+  </div>
   
-  <%= render partial: "home/index_column_left", locals: { user: user } %>
-
-  <%= render partial: "home/index_column_center", locals: { user: user } %>
-
-  <div class = "column-right hide">
-    <div class = "column-right-subtasks">
-      <!-- reload_subtasks.js.erb work here -->
-    </div>
-    <div class = 'column-right-toggle'>
-      <%= button_tag 'Hide Subtasks', type: 'button', name: 'toggle_subtasks',
-          id:'toggle_subtasks', class: 'toggle_subtasks' %>
+  <div class = 'column-center'>
+    <div class = 'list-show'>
+      <%# list/show.js works here %>
+      <div class= 'tasks-header'>Tasks of List</div>
     </div>
   </div>
+
+  <div class = 'column-right'>
+    <div class = 'task-show'>
+      <%# task/show.js works here %>
+      <div class= 'subtasks-header'>Subtasks of List</div>
+    </div>
+  </div>
+</div>
+
+<div class = 'temp'>
+<b>TEMP ALL TASKS</b>
+<% user.tasks.each do |task| %>
+<%= render partial: 'tasks/component', locals: { task: task } %>
+<% end %>
 </div>

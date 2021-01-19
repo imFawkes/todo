@@ -1,0 +1,14 @@
+<div class = "list">
+  <div class = 'list-data-name'><%= list.name %></div>
+  <% unless list.is_default == true %>
+    <div class = 'list-action-delete'>
+      <%= link_to "Delete List", list_path(list), 
+          method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
+    </div>
+  <% end %>
+  <div class = "list-action-show">
+    <%= form_with url: list_path(list), method: :get do |form| %>
+      <%= form.submit 'Show Tasks'%>
+    <% end %>
+  </div>
+</div>

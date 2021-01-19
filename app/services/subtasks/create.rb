@@ -1,36 +1,20 @@
 class Subtasks::Create
-  Result = Struct.new(:success?, :errors, :object)
+  Result = Struct.new(:success?, :errors)
 
-  def initialize(params, current_user)
-    @params = params
-    @current_user = current_user
-  end
-
-  def call
-    user = User.find_by(id: @params[:user_id])
-    unless user
-      return Result.new(false, ['User not found'], nil)
-    end
-    unless user == @current_user
-      return Result.new(false, ['No access error'], nil) 
-    end
-
-    task = user.tasks.find_by(id: @params[:task_id])
-    unless task
-      return Result.new(false, ['Task not found'], nil)
-    end
-
-    subtask = task.subtasks.new(subtask_params)
+  def call(params, current_user)
+    task = current_user.tasks.find_by(id: params[:task_id])
+    subtask = task.subtasks.new(subtask_params(params))
+    
     if subtask.save
-      Result.new(true, [], subtask)
+      Result.new(true, [])
     else
-      Result.new(false, subtask.errors, subtask)
+      Result.new(false, subtask.errors)
     end
   end
 
   private
 
-  def subtask_params
-    @params.require(:subtask).permit(:content)
+  def subtask_params(params)
+    params.require(:subtask).permit(:content)
   end
 end

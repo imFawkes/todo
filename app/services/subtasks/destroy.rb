@@ -1,40 +1,23 @@
 class Subtasks::Destroy
-  Result = Struct.new(:success?, :errors, :object)
+  Result = Struct.new(:success?, :errors)
 
-  def initialize(params, current_user)
-    @params = params
-    @current_user = current_user
-  end
+  def call(params, current_user)
+    task = current_user.tasks.find_by(id: params[:task_id])
 
-  def call
-    user = User.find_by(id: @params[:user_id])
-    unless user
-      return Result.new(false, ['User not found'], nil)
-    end
-    unless user == @current_user
-      return Result.new(false, ['No access error'], nil) 
-    end
-
-    task = user.tasks.find_by(id: @params[:task_id])
-    unless task
+    if task == nil
       return Result.new(false, ['Task not found'], nil) 
     end
 
-    subtask = task.subtasks.find_by(id: @params[:id])
-    unless subtask
+    subtask = task.subtasks.find_by(id: params[:id])
+
+    if subtask == nil
       return Result.new(false, ['Subtask not found'], nil) 
     end
 
     if subtask.destroy
-      Result.new(true, [], nil)
+      Result.new(true, [])
     else
-      Result.new(false, subtask.errors, subtask) # а такие могут быть?
+      Result.new(false, subtask.errors)
     end
-  end
-
-  private
-
-  def subtask_params
-    @params.require(:subtask).permit(:content)
   end
 end

@@ -1,28 +1,26 @@
 class ListsController < ApplicationController
-  #  в createm destroy
-  # result.object пока отдаем бессмысленно, т.к. перезагружается вся колонка с lists
-  # + для render eager load чтоб загрузить колонку
-
   def create
-    result = Lists::Create.new(params, current_user).call
+    result = Lists::Create.new.call(params, current_user)
 
     if result.success?
-      user = User.includes(:lists).find_by(id: current_user[:id])
-      render 'home/reload_column_left', locals: { user: user, list: result.object }
+      redirect_to root_path
     else
       redirect_to root_path, alert: result.errors
     end
   end
 
   def destroy
-    result = Lists::Destroy.new(params, current_user).call
+    result = Lists::Destroy.new.call(params, current_user)
 
     if result.success?
-      user = User.includes(:lists).find_by(id: current_user[:id])
-      render 'home/reload_column_left', locals: { user: user, list: result.object }
+      redirect_to root_path
     else
       redirect_to root_path, alert: result.errors
     end
   end
 
+  def show
+    list = current_user.lists.find_by(id: params[:id])
+    render partial: 'lists/show.js', locals: { list: list }
+  end
 end

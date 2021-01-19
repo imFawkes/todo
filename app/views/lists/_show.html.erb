@@ -1,16 +1,10 @@
-<div class = "list">
-  <div class = 'list-name'><%= list.name %></div>
-  <div class = "task-subtasks">
-    <%= form_with url: user_list_index_list_path(user, list), method: :get do |form| %>
-      <%= form.submit 'Show Tasks'%>
-    <% end %>
+<div class = 'list-show'>
+  <div class = 'tasks-header'>
+    <%= list.name %>
   </div>
-  <% unless list.isDefault %>
-    <div class = 'list-delete'>
-      <%= link_to "Delete List", user_list_path(user, list), 
-          method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
-    </div>
-  <% end %>
+  <div class = 'tasks-header2'>
+    Tasks:
+  </div>
+  <%= render partial: 'tasks/index', locals: { tasks: list.tasks } %>
+  <%= render partial: 'tasks/new' %>
 </div>
-
-

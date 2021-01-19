@@ -1,7 +1,6 @@
-<div class= "subtask-new-box">
-  <%= form_with url: user_task_subtasks_path(user, task),
-      scope: "subtask", class: "subtask-new-form" do |form| %>
-    <%= form.submit "Add Subtask", class: "subtask-new-button" %>
-    <%= form.text_field :content, class: "subtask-new-input" %>
+<div class= "subtask-new">
+  <%= form_with model: [task, Subtask.new], class: "subtask-new-form" do |form| %>
+    <%= form.text_field :content, class: "task-new-input" %>
+    <%= form.submit "Add Subtask", class: "task-new-button" %>
   <% end %>
 </div>

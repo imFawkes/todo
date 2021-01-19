@@ -1,6 +1,5 @@
-<div class = "subtasks">
-  <div class = "subtasks-header">Subtasks</div>
-  <% task.subtasks.each do |subtask|%>
-      <%= render partial: "subtasks/show", locals: { user: user, task: task, subtask: subtask } %>
-  <% end %>
-</div>
+  <div class = 'subtasks'>
+    <% subtasks.each do |subtask| %>
+      <%= render partial: 'subtasks/component', locals: { subtask: subtask } %>
+    <% end %>
+  </div>

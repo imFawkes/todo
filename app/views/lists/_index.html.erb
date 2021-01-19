@@ -1,6 +1,5 @@
-<div class = "lists">
-  <h2 class = lists-header>User Lists</h2>
-  <% user.lists.each do |list|%>
-    <%= render partial: "lists/show", locals: { user: user, list: list } %>
+<div class = 'lists'>
+  <% lists.each do |list| %>
+    <%= render partial: 'lists/component', locals: { list: list } %>
   <% end %>
 </div>

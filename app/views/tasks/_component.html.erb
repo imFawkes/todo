@@ -1,0 +1,18 @@
+<div class = "task">
+  <div class = 'task-data-content'><%= task.content %></div>
+  <div class = 'task-action-delete'>
+    <%= link_to "Delete Task", task_path(task), 
+        method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
+  </div>
+  <div class = "task-lists">
+    <%= form_with url: change_list_task_path(task), method: :patch do |form| %>
+      <%= collection_select "", :list_id, task.user.lists, :id, :name, selected: task.list_id %>
+      <%= form.submit 'Change List'%>
+    <% end %>
+  </div>
+  <div class = "task-action-show">
+    <%= form_with url: task_path(task), method: :get do |form| %>
+      <%= form.submit 'Show Subtasks'%>
+    <% end %>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <div class= "list-new">
-  <%= form_with model: [user, List.new] do |form| %>
+  <%= form_with model: List.new do |form| %>
     <span><%= form.text_field :name %></span>
     <span><%= form.submit "Add List" %></span>
   <% end %>

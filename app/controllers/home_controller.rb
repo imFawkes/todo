@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-
   def index
     user = current_user
     if user.user?
@@ -9,5 +8,4 @@ class HomeController < ApplicationController
       render 'admin/index_admin', locals: { user: user }
     end
   end
-
 end

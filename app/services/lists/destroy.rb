@@ -1,39 +1,17 @@
 class Lists::Destroy
-  Result = Struct.new(:success?, :errors, :object)
+  Result = Struct.new(:success?, :errors)
 
-  def initialize(params, current_user)
-    @params = params
-    @current_user = current_user
-  end
+  def call(params, current_user)
+    list = current_user.lists.find_by(id: params[:id])
 
-  def call
-    user = User.find_by(id: @params[:user_id])
-    unless user
-      return Result.new(false, ['User not found'], nil)
-    end
-    unless user == @current_user
-      return Result.new(false, ['No access error'], nil) 
-    end
-
-    list = user.lists.find_by(id: @params[:id])
-    unless list
+    if list == nil
       return Result.new(false, ['List not found'], nil) 
     end
-    if list.isDefault
-      return Result.new(false, ['Default list can not be destroyed'], nil) 
-    end
-
 
     if list.destroy
-      Result.new(true, [], nil)
+      Result.new(true, [])
     else
-      Result.new(false, list.errors, list) # а такие могут быть?
+      Result.new(false, list.errors)
     end
-  end
-
-  private
-
-  def list_params
-    @params.require(:list).permit(:content)
   end
 end

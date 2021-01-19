@@ -1,32 +1,20 @@
 class Tasks::Create
-  Result = Struct.new(:success?, :errors, :object)
+  Result = Struct.new(:success?, :errors)
 
-  def initialize(params, current_user)
-    @params = params
-    @current_user = current_user
-  end
-
-  def call
-    user = User.find_by(id: @params[:user_id])
-    unless user
-      return Result.new(false, ['User not found'], nil)
-    end
-    unless user == @current_user
-      return Result.new(false, ['No access error'], nil) 
-    end
-
-    task = user.tasks.new(task_params)
-    task.list = user.lists.find_by(name: 'Unsorted') # temp
+  def call(params, current_user)
+    task = current_user.tasks.new(task_params(params))
+    
     if task.save
-      Result.new(true, [], task)
+      Result.new(true, [])
     else
-      Result.new(false, task.errors, task)
+      Result.new(false, task.errors)
     end
   end
 
   private
 
-  def task_params
-    @params.require(:task).permit(:content)
+  def task_params(params)
+    params.require(:task).permit(:content)
   end
 end
+

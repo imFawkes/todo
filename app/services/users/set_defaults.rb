@@ -3,6 +3,6 @@ class Users::SetDefaults
     user = User.find_by(id: user_id)
     user.role = :user
     user.save
-    user.lists.create(name: "Unsorted service", isDefault: true)
+    user.lists.create(name: "Unsorted", is_default: true)
   end
 end
