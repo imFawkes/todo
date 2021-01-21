@@ -1,0 +1,6 @@
+task = document.querySelector('[data-id = "<%= task.id %>"]')
+
+if (task != null)
+  task.remove()
+
+// + если на момент удаления отображались subtasks of task - нужно перерисовать - например скрыть колонку с subtasks

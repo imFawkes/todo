@@ -1,0 +1,9 @@
+tasks = document.querySelector('.tasks')
+
+if (tasks != null)
+  tasks.insertAdjacentHTML('beforeend', '<%= j render partial: 'tasks/component.html', locals: { task: task } %>')
+
+newTaskContentField = document.querySelector('#task_content')
+
+if (newTaskContentField != null)
+  newTaskContentField.value = ''

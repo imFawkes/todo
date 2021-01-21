@@ -1,0 +1,6 @@
+list = document.querySelector('[data-id = "<%= list.id %>"]')
+
+if (list != null)
+  list.remove()
+
+// + если на момент удаления отображались tasks этого листа - нужно перерисовать например на Unsorted

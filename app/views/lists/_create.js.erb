@@ -1,0 +1,9 @@
+lists = document.querySelector('.lists-custom')
+
+if (lists != null)
+  lists.insertAdjacentHTML('beforeend', '<%= j render partial: 'lists/component.html', locals: { list: list } %>')
+
+newListNameField = document.querySelector('#list_name')
+
+if (newListNameField != null)
+  newListNameField.value = ''

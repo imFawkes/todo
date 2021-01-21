@@ -6,23 +6,20 @@
   </div>
   
   <div class = 'column-center'>
-    <div class = 'list-show'>
+    <% if unsorted_list != nil %>
+      <%= render partial: 'lists/show.html', locals: { list: unsorted_list } %>
+    <% else %>
       <%# list/show.js works here %>
-      <div class= 'tasks-header'>Tasks of List</div>
-    </div>
+      <div class = 'list-show'>
+        <div class= 'tasks-header'>Tasks of List</div>
+      </div>
+    <% end %>
   </div>
 
-  <div class = 'column-right'>
+  <div class = 'column-right hide'>
+    <%# task/show.js works here %>
     <div class = 'task-show'>
-      <%# task/show.js works here %>
-      <div class= 'subtasks-header'>Subtasks of List</div>
+      <div class= 'subtasks-header'>Subtasks of Task</div>
     </div>
   </div>
-</div>
-
-<div class = 'temp'>
-<b>TEMP ALL TASKS</b>
-<% user.tasks.each do |task| %>
-<%= render partial: 'tasks/component', locals: { task: task } %>
-<% end %>
 </div>

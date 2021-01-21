@@ -1,0 +1,4 @@
+task = document.querySelector('[data-id="<%= task.id %>"]')
+selectedList = task.querySelector('.task-lists').querySelector('[selected="selected"]')
+if (selectedList.value != <%= task.list_id %>)
+  task.remove()

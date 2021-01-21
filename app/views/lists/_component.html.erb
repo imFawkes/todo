@@ -1,4 +1,4 @@
-<div class = "list">
+<div class = "list" data-id = "<%= list.id %>">
   <div class = 'list-data-name'><%= list.name %></div>
   <% unless list.is_default == true %>
     <div class = 'list-action-delete'>
@@ -8,7 +8,7 @@
   <% end %>
   <div class = "list-action-show">
     <%= form_with url: list_path(list), method: :get do |form| %>
-      <%= form.submit 'Show Tasks'%>
+      <%= form.submit 'Show Tasks', onclick: 'hideSubtasks()' %>
     <% end %>
   </div>
 </div>

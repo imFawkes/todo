@@ -1,9 +1,19 @@
 class TasksController < ApplicationController
+  def show
+    result = Tasks::Show.new.call(params, current_user)
+  
+    if result.success?
+      render partial: 'tasks/show.js', locals: { task: result.object }
+    else
+      redirect_to root_path, alert: result.errors
+    end
+  end
+
   def create
     result = Tasks::Create.new.call(params, current_user)
 
     if result.success?
-      redirect_to root_path
+      render partial: 'tasks/create.js', locals: { task: result.object }
     else
       redirect_to root_path, alert: result.errors
     end
@@ -13,23 +23,20 @@ class TasksController < ApplicationController
     result = Tasks::Destroy.new.call(params, current_user)
 
     if result.success?
-      redirect_to root_path
+      render partial: 'tasks/destroy.js', locals: { task: result.object }
     else
       redirect_to root_path, alert: result.errors
     end
   end
 
-  def show
-    task = current_user.tasks.find_by(id: params[:id])
-    render partial: 'tasks/show.js', locals: { task:task }
-  end
-
+  #likely this action should be part of 'edit' action
   def change_list
-    task = current_user.tasks.find_by(id: params[:id])
-    list = current_user.lists.find_by(id: params[:list_id])
+    result = Tasks::ChangeList.new.call(params, current_user)
 
-    list.tasks << task
-
-    redirect_to root_path
+    if result.success?
+      render partial: 'tasks/change_list.js', locals: { task: result.object }
+    else
+      redirect_to root_path, alert: result.errors
+    end
   end
 end

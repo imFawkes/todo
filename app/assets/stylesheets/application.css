@@ -96,7 +96,7 @@
   padding: 20px;
 }
 
-.lists {
+.lists, .lists-default, .lists-custom {
   display: flex;
   flex-direction: column;
 }
@@ -120,13 +120,14 @@
 
 .list-data-name {
   flex: 1 1 0px;
+  margin-right: 20px;
 }
 
 .list-action-delete {
+  margin-right: 20px;
 }
 
 .list-action-show {
-  margin-left: 20px;
 }
 
 .list-new {
@@ -265,7 +266,10 @@
   justify-content: center;
 }
 
-.toggle_subtasks {
+.toggle-subtasks {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 /* hiding elements */

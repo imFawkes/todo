@@ -6,5 +6,5 @@
     Tasks:
   </div>
   <%= render partial: 'tasks/index', locals: { tasks: list.tasks } %>
-  <%= render partial: 'tasks/new' %>
+  <%= render partial: 'tasks/new', locals: { list: list } %>
 </div>

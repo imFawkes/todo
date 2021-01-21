@@ -3,7 +3,7 @@ class SubtasksController < ApplicationController
     result = Subtasks::Create.new.call(params, current_user)
 
     if result.success?
-      redirect_to root_path
+      render partial: 'subtasks/create.js', locals: { subtask: result.object }
     else
       redirect_to root_path, alert: result.errors
     end
@@ -13,7 +13,7 @@ class SubtasksController < ApplicationController
     result = Subtasks::Destroy.new.call(params, current_user)
 
     if result.success?
-      redirect_to root_path
+      render partial: 'subtasks/destroy.js', locals: { subtask: result.object }
     else
       redirect_to root_path, alert: result.errors
     end

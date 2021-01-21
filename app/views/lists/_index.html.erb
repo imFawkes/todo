@@ -1,5 +1,16 @@
 <div class = 'lists'>
-  <% lists.each do |list| %>
-    <%= render partial: 'lists/component', locals: { list: list } %>
-  <% end %>
+  <div class = 'lists-default'>
+    <% lists.each do |list| %>
+      <% if list.is_default == true %>
+        <%= render partial: 'lists/component', locals: { list: list } %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class = 'lists-custom'>
+    <% lists.each do |list| %>
+      <% if list.is_default == false %>
+        <%= render partial: 'lists/component', locals: { list: list } %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

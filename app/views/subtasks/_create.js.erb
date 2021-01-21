@@ -1,0 +1,9 @@
+subtasks = document.querySelector('.subtasks')
+
+if (subtasks != null)
+  subtasks.insertAdjacentHTML('beforeend', '<%= j render partial: 'subtasks/component.html', locals: { subtask: subtask } %>')
+
+newSubtaskContentField = document.querySelector('#subtask_content')
+
+if (newSubtaskContentField != null)
+  newSubtaskContentField.value = ''

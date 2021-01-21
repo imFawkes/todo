@@ -2,5 +2,6 @@
   <%= form_with model: Task.new, class: "task-new-form" do |form| %>
     <%= form.text_field :content, class: "task-new-input" %>
     <%= form.submit "Add Task", class: "task-new-button" %>
+    <%= form.hidden_field 'list_id', value: list.id %>
   <% end %>
 </div>

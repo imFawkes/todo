@@ -1,9 +1,19 @@
 class ListsController < ApplicationController
+  def show
+    result = Lists::Show.new.call(params, current_user)
+
+    if result.success?
+      render partial: 'lists/show.js', locals: { list: result.object }
+    else
+      redirect_to root_path, alert: result.errors
+    end
+  end
+  
   def create
     result = Lists::Create.new.call(params, current_user)
 
     if result.success?
-      redirect_to root_path
+      render partial: 'lists/create.js', locals: { list: result.object }
     else
       redirect_to root_path, alert: result.errors
     end
@@ -13,14 +23,10 @@ class ListsController < ApplicationController
     result = Lists::Destroy.new.call(params, current_user)
 
     if result.success?
-      redirect_to root_path
+      render partial: 'lists/destroy.js', locals: { list: result.object }
     else
       redirect_to root_path, alert: result.errors
     end
   end
 
-  def show
-    list = current_user.lists.find_by(id: params[:id])
-    render partial: 'lists/show.js', locals: { list: list }
-  end
 end
