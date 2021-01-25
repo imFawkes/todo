@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
     
@@ -15,5 +14,4 @@ Rails.application.routes.draw do
       put 'change_list'
     end
   end
-
 end
