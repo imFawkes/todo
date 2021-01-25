@@ -62,7 +62,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  # Devise Helpers. or try to renam,e to IntegrationHelpers if not working
+  # Devise Helpers. or try to rename to IntegrationHelpers if not working
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
 end

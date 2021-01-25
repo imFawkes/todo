@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe List, type: :model do
-
   context 'associations' do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to have_many(:tasks).dependent(:destroy) }
@@ -13,7 +12,4 @@ RSpec.describe List, type: :model do
     # how to make it works?
     # it { should validate_uniqueness_of(:name).scoped_to(:user).case_insensitive }
   end
-  
-
-
 end

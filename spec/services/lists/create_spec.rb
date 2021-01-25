@@ -1,34 +1,35 @@
 require 'rails_helper'
 
-# Amir's example
+RSpec.describe Lists::Create do
+  let(:current_user) { create(:user) }
+  let(:result) { Lists::Create.new.call(params, current_user) }
 
-describe Lists::Create do
-  let(:result) { described_class.new.call(params) }
+  context 'when params does not have list name' do
+    let(:params) { ActionController::Parameters.new }
 
-  context 'when no user_id in params' do
-    let(:params) { {} }
+    it 'should raise exeption ActionController::ParameterMissing' do
+      expect { result }.to raise_exception(ActionController::ParameterMissing)
+    end
+  end
+  
+  context 'when params have empty list name' do
+    let(:params) { ActionController::Parameters.new(list: attributes_for(:list, :empty_name)) }
 
-    it 'raise NotFoundError and not create List' do
-      expect(result).to raise_error
+    it 'should not create list' do
+      expect(result.success?).to eq false
+      expect(result.errors).to be_an_instance_of(ActiveModel::Errors)
+      expect(result.object).to be_a_new(List)
     end
   end
 
-  context 'when user_id present in params' do
-    let(:params) { { user_id: 1, name: 'asdasd' } }
+  context 'when params have list name' do
+    let(:params) { ActionController::Parameters.new(list: attributes_for(:list)) }
 
-    it 'create List' do
-      expect(result.success?).to be true
-      expect(result.object.name).to be('asdasd')
-      expect(result.object.name).to be('asdasd')
-    end
-  end
-
-  context 'when name not present in params' do
-    let(:params) { { user_id: 1, name: 'asdasd' } }
-
-    it 'not creates with validation error' do
-      expect(result.success?).to be true
-      expect(result.object.name).to be('asdasd')
+    it 'should create list' do
+      expect(result.success?).to eq true
+      expect(result.errors).to eq([])
+      expect(result.object).not_to be_a_new(List)
+      expect(result.object.name).to eq(params[:list][:name])
     end
   end
 end

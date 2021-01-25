@@ -28,5 +28,4 @@ class ListsController < ApplicationController
       redirect_to root_path, alert: result.errors
     end
   end
-
 end
