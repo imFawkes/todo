@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is simple ToDo project to learn basics of Ruby, RoR, DB, Rspec and so on.
 
-Things you may want to cover:
+In app you can create user, authenticate it, and do stuff with tasks (ToDos), subtasks, lists of tasks.
 
-* Ruby version
+Email confirmation (Devise) tested through EmailCatcher.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Ruby version - 2.7.2
