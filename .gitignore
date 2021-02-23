@@ -39,3 +39,9 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore rvm gemset config 
+.ruby-gemset 
+
+# Ignore Redis dump.rdb
+dump.rdb
